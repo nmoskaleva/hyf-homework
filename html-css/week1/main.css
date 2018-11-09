@@ -1,0 +1,140 @@
+/*all content*/
+#container{
+    font-family: 'Nunito Sans', sans-serif;
+    margin: 0% 8% 0% 8%;
+    padding: 3%;
+    font-size: 0.9em;
+}
+
+h1{
+    padding-left: 35px;
+    padding-top: 15px;
+}
+
+h1, h2, h3, h4{
+    font-family: 'Chivo', sans-serif;
+}
+
+/*header*/
+header{
+    background-color: rgb(153, 155, 155);
+}
+
+/*header menu*/
+.menu{
+    border-bottom: 5px solid yellow;
+}
+
+.menu li{
+    display: inline-block;
+    margin-right: 15px;
+    margin-bottom: 5px;
+}
+
+.menu li a:hover{
+    background: coral;
+}
+
+/*left section*/
+
+#left-column{
+    float: left;
+    width: 30%;
+    margin-top: 2%;
+    margin-bottom: 5%;
+    padding: 2% 1% 0% 2%;
+    background-color: rgb(153, 155, 155);
+    box-shadow: 5px 5px 15px 5px rgb(197, 204, 94);
+    overflow: hidden;
+}
+
+#left-column p{
+    line-height: 2em;
+    padding: 0px 10px 0px 10px;
+}
+
+/*Learning Strategies and HYF resources*/
+
+.aditional-info{
+    padding: 5px;
+}
+
+.aditional-info h3{
+    color:rgb(253, 248, 175);
+}
+
+.aditional-info a:hover{
+    background-color: coral;
+}
+
+aside ul{
+    list-style: none;
+}
+
+/*right section*/
+#right-column{
+    float: right;
+    width: 64%;
+    margin-top: 2%;
+}
+
+.right-box{
+    box-shadow: 5px 5px 5px 5px rgb(197, 204, 94);
+    margin: 5px 5px 20px 10px;
+    padding: 5px 10px 5px 10px;
+    font-size: 0.9em;
+}
+
+/*contacts*/
+
+#contacts{
+    font-size: 0.85em;
+    padding: 0px;
+    margin-left: -40px;
+    text-align: justify;
+}
+
+#contacts li{
+    display: inline-block;
+}
+
+li a{
+    color: black;
+}
+
+/*work and education boxes*/
+.year{
+    color: rgb(119, 175, 201);
+    font-size: 0.8em;
+}
+
+.position, .uni{
+    font-size: 1.1em;
+}
+
+/*footer*/
+footer{
+    position: relative;
+    height: 50px;
+    margin-top: 15%;
+    margin-bottom: 15%;
+    padding: 20px;
+    background-color: rgb(197, 204, 94);
+    clear: both;
+}
+
+@media screen and (max-width: 600px){
+    #right-column, #left-column {
+        float: none;
+        width: 100%;
+        box-shadow: none;
+    }
+
+    #contacts{
+        font-size: 1em;
+    }
+
+    footer{
+        display: none;
+    }
+}
