@@ -24,7 +24,7 @@
       <progress max="100" value="15">15/100</progress>
     </div>
     <p>Nice to meet you. Let's spend a minute to get to know each other? Please enter the following:</p>
-    <form>
+    <form action="index2.html" method="post">
       <div>
         <label for="first-name">First Name*</label>
         <input type="text" id="first-name" name="user-first-name" pattern="^[a-zA-Z]+" minlength="2" required>
@@ -91,7 +91,8 @@
         <textarea name="profile" id="profile" cols="30" rows="100" maxlength="500"></textarea>
       </div>
       <div class="button clear">
-        <button type="submit"><a href="index2.html">Next</a></button>
+        <button type="submit">Next Step (Validation)</button>
+        <button type="button"><a href="index2.html">Next Step (Link)</a></button>
       </div>
     </form>
   </section>
