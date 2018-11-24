@@ -1,0 +1,108 @@
+body {
+    border: 1px solid lightgray;
+    padding: 3em;
+    margin: 5% 15% 5% 15%;
+    font-family: sans-serif;
+}
+
+/*Progress bar*/
+progress[value] {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 3em;
+    width: 100%;
+}
+
+progress[value]::-webkit-progress-bar {
+    background-color: white;
+    border: 1px solid gray;
+}
+
+progress[value]::-webkit-progress-value {
+    background-color: lightgray;
+    border-right: 1px solid gray;
+}
+
+/*General and Step 1*/
+form div+div {
+    margin-top: 1em;
+    display: inline-block;
+}
+
+form div:nth-child(1) {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    display: inline-block;
+}
+
+form div+fieldset {
+    margin-top: 2em;
+}
+
+label {
+    float: left;
+    min-width: 120px;
+    text-align: right;
+    padding-right: 6px;
+    font-weight: bold;
+}
+
+input,
+textarea,
+select {
+    font: 1em sans-serif;
+    box-sizing: border-box;
+    border: 1px solid lightgray;
+    min-width: 150px;
+    height: 2em;
+}
+
+textarea {
+    width: 90%;
+    height: 12em;
+}
+
+/*Toggled state for shipping address*/
+input[type=checkbox]:checked~div {
+    display: none;
+}
+
+/*Step2*/
+fieldset {
+    display: inline;
+    text-align: left;
+}
+
+.nostyle label {
+    float: none;
+}
+
+/*step3*/
+.style {
+    max-width: 960px;
+}
+
+.images {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+}
+
+img {
+    width: 160px;
+    display: flex;
+}
+
+button {
+    margin-top: 2em;
+    width: 100px;
+    height: 50px;
+}
+
+.clear {
+    display: block;
+    content: " ";
+    clear: both;
+}

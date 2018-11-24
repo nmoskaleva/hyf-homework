@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Step4</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <h1>Sign up to yourcustomtailor.com</h1>
+    <section class="step">
+        <h2>Step 4/4 - Payment</h2>
+        <div class="progress">
+            <h4>Progress</h4>
+            <progress max="100" value="90">90/100</progress>
+        </div>
+        <p>Please fill in your payment data</p>
+        <form action="index.html" method="post">
+            <div>
+                <label for="name-card">Name on card</label>
+                <input type="text" name="name-card" id="name-card">
+            </div><br>
+            <div>
+                <label for="card-type">Card type</label>
+                <select name="card-type" id="card-type" required>
+                    <option value="visa">Visa</option>
+                    <option value="master">MasterCard</option>
+                </select>
+            </div>
+            <div>
+                <label for="card-number">Credit Card Number</label>
+                <input type="number" name="card-number" id="card-number" pattern="^([0-9]{4}[\s-]?){3}([0-9]{4})$" min="1111111111111111"
+                    max="9999999999999999" required>
+            </div>
+            <div>
+                <label for="first-name">First Name</label>
+                <input type="text" name="first-name" id="first-name" required>
+            </div>
+            <div>
+                <label for="expiry-month">Expiry Month</label>
+                <input type="number" name="month" id="expiry-month" min="01" max="12" required>
+            </div>
+            <div>
+                <label for="expiry-year">Expiry Year</label>
+                <input type="number" name="year" id="expiry-year" min="2018" max="2028" required>
+            </div>
+            <div>
+                <label for="cvv">CVV</label>
+                <input type="number" name="cvv" id="cvv" pattern="/^[0-9]{3}$/" min="111" max="999" required>
+            </div><br>
+            <div class="button clear">
+                <button>Next Step</button>
+            </div>
+        </form>
+    </section>
+</body>
+
+</html>

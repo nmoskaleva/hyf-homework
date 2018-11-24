@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Step2</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <h1>Sign up to yourcustomtailor.com</h1>
+    <section class="step">
+        <h2>Step 2/4 – how can we reach you?</h2>
+        <div class="progress">
+            <h4>Progress</h4>
+            <progress max="100" value="25">15/100</progress>
+        </div>
+        <p>We probably need to stay in touch somehow. Let us know how can we reach you?</p>
+        <form action="index3.html" method="post">
+            <div>
+                <label for="email">Email*</label>
+                <input type="email" name="user-email" id="email" pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
+                    required>
+            </div>
+            <div>
+                <label for="phone">Phone</label>
+                <input type="tel" name="phone" id="phone" minlength="6" maxlength="10">
+            </div>
+            <div>
+                <label for="pwd">Password*</label>
+                <input type="password" name="pwd" id="pwd" pattern="^[a-zA-Z]+" minlength="10" required>
+            </div>
+            <div>
+                <label for="pwd2">Re-enter Password*</label>
+                <input type="password" name="pwd2" id="pwd2" pattern="^[a-zA-Z]+" minlength="10" required>
+            </div>
+            <fieldset class="clear nostyle">
+                <legend>I want to sign up for the newsletter</legend>
+                <input type="radio" name="news" id="weekly" checked>
+                <label for="weekly">Weekly news</label>
+
+                <input type="radio" name="news" id="monthly">
+                <label for="monthly">Monthly news</label>
+
+                <input type="radio" name="news" id="nonews">
+                <label for="nonews">Don't send me news</label>
+            </fieldset>
+            <div class="button clear">
+                <button type="submit">Next step</button>
+            </div>
+        </form>
+    </section>
+</body>
+
+</html>

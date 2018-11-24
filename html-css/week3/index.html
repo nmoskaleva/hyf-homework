@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="ie=edge" http-equiv="X-UA-Compatible">
+  <title>Step1</title>
+  <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+  <div>
+    <h1>Sign up to yourcustomtailor.com</h1>
+    <p>We can't wait to help you improve your life-style and gain the attention from people around you!</p>
+    <p>Sign up below to save up to 70% on apparel, hand-bags and cosmetics. Our agents are busy picking the best offers
+      that match your preferences and style. Every week we will send you a hand-picked section – we just need to know a
+      few details about you first...</p>
+  </div>
+  <section class="step">
+    <h2>Step 1/4 - tell us who you are?</h2>
+    <div class="progress">
+      <h4>Progress</h4>
+      <progress max="100" value="15">15/100</progress>
+    </div>
+    <p>Nice to meet you. Let's spend a minute to get to know each other? Please enter the following:</p>
+    <form action="index2.html" method="post">
+      <div>
+        <label for="first-name">First Name*</label>
+        <input type="text" id="first-name" name="user-first-name" pattern="^[a-zA-Z]+" minlength="2" required>
+      </div>
+      <div>
+        <label for="last-name">Last Name*</label>
+        <input type="text" id="last-name" name="user-last-name" pattern="^[a-zA-Z]+" minlength="2" required>
+      </div>
+      <div>
+        <label for="country">Country*</label>
+        <select id="country" name="country" class="form-control">
+          <option value="Denmark">Denmark</option>
+          <option value="Finland">Finland</option>
+          <option value="Norway">Norway</option>
+          <option value="Sweden">Sweden</option>
+        </select>
+      </div>
+      <div>
+        <label for="street">Street address*</label>
+        <input type="text" name="street" id="street" required>
+      </div>
+      <div>
+        <label for="post-code">Post code*</label>
+        <input type="number" name="post-code" id="post-code" max="9999" required>
+      </div>
+      <!--Shipping address-->
+      <div>
+        <p>Use the same address for billing and shipping? Uncheck below to fill out a separate shipping address.</p>
+        <label for="shipping">Shipping address</label>
+        <input type="checkbox" name="shipping" id="shipping" checked>
+        <div>
+          <h4>Shipping address</h4>
+          <div>
+            <label for="first-name">First Name*</label>
+            <input type="text" name="first-name" id="ship-user-first-name">
+          </div>
+          <div>
+            <label for="last-name">Last Name*</label>
+            <input type="text" name="last-name" id="ship-user-last-name">
+          </div>
+          <div>
+            <label for="country2">Country*</label>
+            <select id="country2" name="country" class="form-control">
+              <option value="Denmark">Denmark</option>
+              <option value="Finland">Finland</option>
+              <option value="Norway">Norway</option>
+              <option value="Sweden">Sweden</option>
+            </select>
+          </div>
+          <div>
+            <label for="street2">Street address*</label>
+            <input type="text" name="street" id="street2">
+          </div>
+          <div>
+            <label for="post-code2">Post code*</label>
+            <input type="number" name="post-code" id="post-code2" max="9999">
+          </div>
+        </div>
+      </div>
+      <!--End of Shipping address-->
+      <div>
+        <p>Please provide a short description of yourself to be displayed on out social community pages.</p>
+        <label for="profile">Profile description</label>
+        <textarea name="profile" id="profile" cols="30" rows="100" maxlength="500"></textarea>
+      </div>
+      <div class="button clear">
+        <button type="submit">Next</button>
+      </div>
+    </form>
+  </section>
+</body>
+
+</html>
