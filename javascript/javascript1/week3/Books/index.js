@@ -15,6 +15,7 @@ for(let i = 0; i < books.length; i++) {
 }
 bookList();
 */
+
 //3. make an object with info for each book
 let infoBooks = [{
         id: "doctor_faustus",
@@ -78,7 +79,7 @@ let infoBooks = [{
     }
 ]
 
-////4. change the function to take actual info from the object and display it
+//4. change the function to take actual info from the object and display it
 function bookList() {
     let x = document.createElement("ul");
     document.body.appendChild(x);
@@ -98,15 +99,7 @@ function bookList() {
     }
 }
 bookList();
-/*
-function setId(){
-for (let i = 0; i < books.length; i++){
-    let lis = document.querySelectorAll("li");
-    lis.setAttribute("id", "infoBooks[i].id");
-}
-}
-setId();
-*/
+
 //5.1 construct a new object with book covers: book id as a key, path to img source as value 
 let bookCovers = {
     "doctor_faustus": "./covers/doctor_faustus.jpg",
