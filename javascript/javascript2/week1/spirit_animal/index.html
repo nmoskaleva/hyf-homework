@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Spirit animal</title>
+    <link rel="stylesheet" href="main.css">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata|Major+Mono+Display" rel="stylesheet">
+</head>
+
+<body>
+    <div class="forUserName">
+        <label for="username">Name: </label>
+        <input type="text" name="fullname" id="userName" oninput="inputFunction()" onkeydown="keyDownFunction()"><br>
+        <button id="myBtn">Get my Spirit Animal</button>
+        <p id="print_animal"></p>
+    </div>
+    <div class="newBns">
+        <button id="yesBtn" class="noShow">Yes I am</button>
+        <button id="noBtn" class="noShow">Give me a New Spirit Animal</button>
+    </div>
+    <div>
+        <p class="smaller" id="question">When do you want your Spirit Animal?</p>
+        <select id="selectWhenShowAnimal">
+            <option value="button">When I click the button</option>
+            <option value="text" oninput="inputFunction()">When text is written</option>
+            <option value="input">When the input changes</option>
+        </select>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>
