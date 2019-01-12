@@ -104,12 +104,12 @@ bookList();
 let bookCovers = {
     "doctor_faustus": "./covers/doctor_faustus.jpg",
     "homo_deus_brief_history": "./covers/homodeus.jpg",
-    "master_and_margarita": "./covers/master.jpg",
     "12million_stuffed_shark": "./covers/shark.jpg",
     "steppenwolf": "./covers/steppenwolf.jpg",
     "brief_answers_big_questions": "./covers/brief_answers.jpg",
     "open_veins_lat_am": "./covers/OpenVeinCover.jpg",
     "inmates_running_asylum": "./covers/inmates.jpg",
+    "master_and_margarita": "./covers/master.jpg",
     "code_the_hidden_language": "./covers/code.jpg",
     "buddenbrooks": "./covers/buddenbrooks.jpg"
 }
