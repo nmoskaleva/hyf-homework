@@ -10,22 +10,28 @@ let container = document.querySelector(`.container`);
 
 function animateLiOut(e) {
     return new Promise((resolve) => {
+
         let card = container.children[i];
+        if (!card) { return};
+        card.addEventListener("transitionend", function(event) {
+            resolve(); //is it ok to resolve without an argument? - YES!
+        }, false);
         if (e.target === thumbsUpBtn || e.target.innerHTML === "Thumbs up" || e.target.innerHTML === "👍") {
-            setTimeout(() => {
-                card.style.transform = "translateX(1000px)";
-                //console.log(e.target);
-            }, 200);
+            card.style.transform = "translateX(1000px)";
         } else if (e.target === thumbsDownBtn || e.target.innerHTML === "Thumbs down" || e.target.innerHTML === "👎") {
-            setTimeout(() => {
-                card.style.transform = "translateX(-1000px)";
-            }, 200);
+            card.style.transform = "translateX(-1000px)";
         }
-        resolve(); //is it ok to resolve without an argument?
+        ++i;
+       
     }).then(() => {
-        container.children[i + 1].classList.add("current-card");
-        i++;
-    }).catch(() => console.error("error"));
+
+        if (container.children[i]) {
+            container.children[i].classList.add("current-card");
+        } else {
+            alert('no more images');
+        }
+    
+    }).catch((err) => console.error(err));
 }
 
 let thumbsUpBtn = document.querySelector(`.accept`);
