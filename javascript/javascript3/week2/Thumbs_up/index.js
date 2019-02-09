@@ -49,15 +49,25 @@ fetch(`https://www.rijksmuseum.nl/api/nl/collection?key=V51JuyCZ&format=json&typ
         let webImage = items.map((item) => item.webImage);
         let picSrc = webImage.map((item) => item.url);
         let titles = items.map(item => item.longTitle);
-        picSrc.forEach((picsource) => { //what if I want to show both img and title? or add title as an alt? another forEach?
-            let lis = document.createElement("li");
-            container.appendChild(lis);
+        picSrc.forEach((picsource) => { 
+            let li = document.createElement("li");
+            container.appendChild(li);
             let imgs = document.createElement("img");
-            imgs.src = picsource;
-            imgs.alt = titles[0]; //?couldn't figure out how to iterate yet
+            li.classList.add('loading')
             imgs.classList.add("rendered-img");
-            lis.appendChild(imgs);
+            li.appendChild(imgs);
         });
+        
+        // Recursive function to load images consecutively
+        ;(function getRealImage (number, lis = document.querySelectorAll("ul li")) {
+            var img = lis[number].querySelector('img');
+            img.src = picSrc[number]
+            img.alt = titles[number];
+            img.addEventListener('load', () => {
+                console.log('img loaded')
+                if (picSrc[number +1]) getRealImage(number + 1);
+            } )
+        })(0);
     });
 
 
