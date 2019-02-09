@@ -41,45 +41,26 @@ let fetchMovies = function () {
             .then(response => response.json()))
     })
 }
+
 fetchMovies()
     .then((movies) => {
         console.log(movies);
-        return new Promise((resolve) => {
-            //array of long movies
-            let longMovies = movies.filter(movies => movies.running_times > 7000);
-            resolve(longMovies);
-        })
-    })
-    .then(result => {
-        //array of long movie titles
-        return new Promise((resolve) => {
-            let longMovieTitles = result.map(movie => movie.title);
-            console.log(longMovieTitles);
-            resolve(longMovieTitles);
-        })
+        //array of long movies
+        let longMovies = movies.filter(movies => movies.running_times > 7000);
+        console.log(longMovies)
+        let longMovieTitles = longMovies.map(movie => movie.title);
+        console.log(longMovieTitles)
     });
-
+    
 fetchMovies()
-    .then((result) => {
-        return new Promise((resolve) => {
+    .then((result) => {   
             //array of bad movies    
             let badMovies = result.filter(movie => movie.rating < 6);
             console.log(badMovies);
-            resolve(badMovies);
-        })
-    })
-    .then((result) => {
-        return new Promise((resolve) => {
-            //bad movies since 2000
             let badMoviesSince2000 = result.filter(movie => movie.year > 1999);
             console.log(badMoviesSince2000);
-            resolve(badMoviesSince2000);
-        })
-    })
-    .then((result) => {
-        //bad movies since 2000 titles
-        let badMoviesSince2000Titles = result.map(movie => movie.title);
-        console.log(badMoviesSince2000Titles);
+            let badMoviesSince2000Titles = badMoviesSince2000.map(movie => movie.title);
+            console.log(badMoviesSince2000Titles);      
     })
 
 
