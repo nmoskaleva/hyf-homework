@@ -108,9 +108,10 @@ setTimeoutPromise(3000)
 //rewrite geolocation
 function getCurrentLocation() {
     return new Promise(resolve => {
-        resolve(navigator.geolocation.getCurrentPosition(function(position){
+        navigator.geolocation.getCurrentPosition(function(position){
             console.log(position.coords.latitude, position.coords.longitude);
-        }));
+            resolve(position)
+        });
     });
 }
 
