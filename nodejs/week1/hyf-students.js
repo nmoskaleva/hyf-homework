@@ -51,7 +51,6 @@ class Student {
     }
 }
 
-//Write a method that can return list of all HYF students
 class StudentBook {
     constructor() {
         this.studentsList = [];
