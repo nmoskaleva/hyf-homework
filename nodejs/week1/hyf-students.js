@@ -57,15 +57,29 @@ class StudentBook {
     }
     //1. A method that returns list is all HYF students
     getStudentsList() {
-        console.log(this.studentsList);
-        return this.studentsList;
+        let fullListOfStudents = this.studentsList.map(student => {
+            let name = student.name;
+            let email = student.email;
+            return {
+                name,
+                email
+            }
+        });
+        console.log(fullListOfStudents);
+        return fullListOfStudents;
     }
 
     //2. A method that can return a filtered list of students by class name
     getListByClass(classNumber) {
         let classList = this.studentsList.filter(student => student.classId == classNumber);
-        console.log(classList);
-        return classList;
+        return classList.map(student => {
+            let name = student.name;
+            let classId = student.classId;
+            return {
+                name,
+                classId
+            };
+        });
     }
 
     //3. A method that can return one student's detailed information
@@ -74,18 +88,19 @@ class StudentBook {
         if (selectedStudent.length == 0) {
             console.log(`No result found`);
         } else {
-            return selectedStudent
+            return selectedStudent;
         };
     }
 
     // 4. A method that can add a new student to HYF which receive the below person object as an input and store to existing list. Check for duplication. 
-    addStudent(student) {
-        let studentNames = this.studentsList.map(student => student.name);
-        let studentEmails = this.studentsList.map(student => student.email);
-        if (studentNames.includes(student.name) === false && studentEmails.includes(student.email) === false) {
-            this.studentsList.push(student);
-        } else {
+    addStudent(newStudent) {
+        let foundDuplicates = this.studentsList.filter(student => {
+            return student.name.includes(newStudent.name) == true || student.email.includes(newStudent.email) == true
+        });
+        if (foundDuplicates.length > 0) {
             console.log(`Student already added`);
+        } else {
+            this.studentsList.push(newStudent);
         }
     }
 
@@ -100,6 +115,14 @@ class StudentBook {
             }
         })
     }
+
+    //6. A method to delete a student
+    deleteStudent(name) {
+        let studentToDelete = this.studentsList.filter(student => student.name.toLowerCase() == name.toLowerCase());
+        console.log(studentToDelete);
+        this.studentsList.splice(this.studentsList.indexOf(studentToDelete), 1);
+        return this.studentsList;
+    }
 }
 
 let hyfStudents = new StudentBook();
@@ -110,6 +133,7 @@ let Rieko = new Student(`Rieko`, 9, `bdk@jk`, `111-11-11`);
 let Sheila = new Student(`Sheila Qasemi`, 8, `dsf@sd`, `999-99-99`);
 let studentWithDuplicatedEmail = new Student(`Sheila not Sheila`, 8, `dsf@sd`, `555-99-99`);
 let Virgeen = new Student(`Virgeen`, 7, `virginrashed4@gmail.com`, `(259) 245-5777`);
+let spongeBob = new Student(`Bob`, 9, `spongebob@gmail.com`, `245-5666`)
 
 hyfStudents.addStudent(Hakki);
 hyfStudents.addStudent(Keerthika);
@@ -118,6 +142,7 @@ hyfStudents.addStudent(Sheila);
 hyfStudents.addStudent(Sheila); //existing student
 hyfStudents.addStudent(studentWithDuplicatedEmail); //student with the same email
 hyfStudents.addStudent(Virgeen);
+hyfStudents.addStudent(spongeBob);
 
 hyfStudents.getStudentsList();
 
@@ -141,4 +166,5 @@ hyfStudents.editStudentInfo({
     "phone": "(263) 972-6043"
 })
 
+hyfStudents.deleteStudent('Bob');
 hyfStudents.getStudentsList();
