@@ -1,0 +1,15 @@
+body{
+    background: darkgray;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h1,h2 {
+    color: darkslateblue;
+    font-size: 3em;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+h2{
+    font-size: 2em;
+}
