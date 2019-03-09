@@ -14,25 +14,29 @@ var server = http.createServer(function (req, res) {
         "phone": "(745) 235-6338"
     }
 
-    hyf_students.addStudent(Natalia);
-    hyf_students.addStudent(Natalia); //adding an existing student, but why 3 times console.log? http://prntscr.com/muz42l
-    hyf_students.editStudentInfo({
-        "name": "Hakki",
-        "classId": 6,
-        "email": "hakki@gmail.com",
-        "phone": "(263) 972-6043"
-    })
+   // hyf_students.addStudent(Natalia);
+   // hyf_students.addStudent(Natalia); //adding an existing student, but why 3 times console.log? http://prntscr.com/muz42l
 
     //routing
     if (url == '/getstudentslist') {
-        res.end(JSON.stringify(hyf_students.getStudentsList()))
+        res.end(JSON.stringify(hyf_students.getStudentsList()));
     } else if (url == '/getlistbyclass') {
-        res.end(JSON.stringify(hyf_students.getListByClass(07)))
+        res.end(JSON.stringify(hyf_students.getListByClass(07)));
     } else if (url == '/getlistbyname') {
-        res.end(JSON.stringify(hyf_students.getStudentDetailByName('Nat')))
+        res.end(JSON.stringify(hyf_students.getStudentDetailByName('Nat')));
     } else if (url == '/editinfo') {
-        res.end(JSON.stringify(hyf_students.getStudentDetailByName('Hakki')))
-    } else if (url.match(/.css$/)) {
+        res.end(JSON.stringify(hyf_students.editStudentInfo({
+            "name": "Hakki",
+            "classId": 6,
+            "email": "hakki@gmail.com",
+            "phone": "(263) 972-6043"
+        })))
+        res.end(JSON.stringify(hyf_students.getStudentsList()));
+    } else if (url == '/addstudent'){
+        res.end(JSON.stringify(hyf_students.addStudent(Natalia)));
+    }
+    
+    else if (url.match(/.css$/)) {
         var fileStream = fs.createReadStream('./main.css', 'UTF-8');
         res.writeHead(200, {
             'Content-Type': 'text/css'

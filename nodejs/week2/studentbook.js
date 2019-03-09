@@ -1,5 +1,5 @@
 var studentsFullList = require('./hyf-students.json');
-var fs = require ('fs');
+var fs = require('fs');
 
 class Student {
     constructor(name, classId, email, phone) {
@@ -61,20 +61,28 @@ class StudentBook {
         } else {
             studentsFullList.push(newStudent);
         }
+        return {
+            newStudent,
+            studentsFullList
+        }
     }
 
     // 5. Edit existing student information
     editStudentInfo(editedStudentInfo) {
-        studentsFullList.filter(student => {
+        studentsFullList.forEach(student => {
             if (editedStudentInfo.name == student.name) {
                 student.classId = editedStudentInfo.classId;
                 student.email = editedStudentInfo.email;
                 student.phone = editedStudentInfo.phone;
                 return student;
             } else {
-                console.log('No such student')
+                console.log('No such student');
             }
         })
+        return {
+            editedStudentInfo,
+            studentsFullList
+        };
     }
 }
 
