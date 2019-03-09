@@ -17,15 +17,11 @@ class StudentBook {
 
     //1. Get full student list
     getStudentsList() {
-        let fullListOfStudents = studentsFullList.map(student => {
+        return studentsFullList.map(student => {
             let name = student.name;
             let email = student.email;
-            return {
-                name,
-                email
-            }
+            return {name, email};
         });
-        return fullListOfStudents;
     }
 
     //2. Get list of students by class
@@ -46,9 +42,8 @@ class StudentBook {
         let selectedStudent = studentsFullList.filter(student => student.name.toLowerCase().includes(name.toLowerCase()));
         if (selectedStudent.length == 0) {
             console.log(`No result found`);
-        } else {
-            return selectedStudent;
-        };
+        } 
+        return selectedStudent;
     }
 
     // 4. Add a new student to HYF which receive the below person object as an input and store to existing list. Check for duplication. 

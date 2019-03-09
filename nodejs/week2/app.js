@@ -17,13 +17,15 @@ var server = http.createServer(function (req, res) {
    // hyf_students.addStudent(Natalia);
    // hyf_students.addStudent(Natalia); //adding an existing student, but why 3 times console.log? http://prntscr.com/muz42l
 
+   hyf_students.getStudentDetailByName("Natalia");
+
     //routing
     if (url == '/getstudentslist') {
         res.end(JSON.stringify(hyf_students.getStudentsList()));
     } else if (url == '/getlistbyclass') {
         res.end(JSON.stringify(hyf_students.getListByClass(07)));
     } else if (url == '/getlistbyname') {
-        res.end(JSON.stringify(hyf_students.getStudentDetailByName('Nat')));
+        res.end(JSON.stringify(hyf_students.getStudentDetailByName('Keer')));
     } else if (url == '/editinfo') {
         res.end(JSON.stringify(hyf_students.editStudentInfo({
             "name": "Hakki",
