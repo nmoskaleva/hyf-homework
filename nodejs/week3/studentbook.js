@@ -1,4 +1,4 @@
-var studentsFullList = require('./hyf-students.json');
+const studentsFullList = require('./hyf-students.json');
 
 class Student {
     constructor(name, classId, email, phone) {
@@ -38,8 +38,7 @@ class StudentBook {
                     classId
                 };
             });
-        }
-        else{
+        } else {
             return false;
         }
     }
@@ -59,7 +58,7 @@ class StudentBook {
     // 4. Add a new student to HYF which receive the below person object as an input and store to existing list. Check for duplication. 
     addStudent(newStudent) {
         let foundDuplicates = studentsFullList.filter(student => {
-            return student.name.includes(newStudent.name) == true || student.email.includes(newStudent.email) == true
+            return student.name.includes(newStudent.name) == true || student.email.includes(newStudent.email) == true;
         });
         if (foundDuplicates.length > 0) {
             console.log(`Student already added`);
@@ -81,23 +80,19 @@ class StudentBook {
             } else {
                 console.log('No such student');
             }
-        })
-        return {
-            editedStudentInfo,
-            //studentsFullList
-        };
+        });
+        return editedStudentInfo;
     }
 
-    deleteStudent(name){
+    deleteStudent(name) {
         let studentToDelete = studentsFullList.filter(student => student.name === name); //toLowerCase
-        if (studentToDelete.length != 0){
+        if (studentToDelete.length != 0) {
             let newList = studentsFullList.splice(studentsFullList.indexOf(studentToDelete), 1);
             return newList;
-        }
-        else{
+        } else {
             console.log(`Student doesn't exist`);
             return null;
-        }   
+        }
     }
 }
 
