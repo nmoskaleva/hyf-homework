@@ -81,14 +81,17 @@ class StudentBook {
                 console.log('No such student');
             }
         });
-        return editedStudentInfo;
+        return true; //I still don't get it, how can I return student object instead of true?
     }
 
     deleteStudent(name) {
         let studentToDelete = studentsFullList.filter(student => student.name === name); //toLowerCase
-        if (studentToDelete.length != 0) {
-            let newList = studentsFullList.splice(studentsFullList.indexOf(studentToDelete), 1);
-            return newList;
+        console.log(studentToDelete); //shows the right object
+        console.log(studentsFullList.indexOf(studentToDelete));//shows -1
+        if (studentToDelete) {
+            studentsFullList.splice(studentsFullList.indexOf(studentToDelete), 1);
+            console.log("here is your full list", studentsFullList); 
+            return studentsFullList;
         } else {
             console.log(`Student doesn't exist`);
             return null;
@@ -97,3 +100,4 @@ class StudentBook {
 }
 
 module.exports.StudentBook = StudentBook; //you export whatever you want to make available from this file. In this case it's a StudentBook class
+module.exports.Student = Student;
