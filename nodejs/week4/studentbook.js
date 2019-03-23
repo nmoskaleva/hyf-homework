@@ -55,18 +55,32 @@ class StudentBook {
         }
     }
 
+    isValidStudent(studentToCheck) {
+        if (studentToCheck.hasOwnProperty('name') && studentToCheck.hasOwnProperty('classId') && studentToCheck.hasOwnProperty('email') && studentToCheck.hasOwnProperty('phone')) {
+            if(studentToCheck.name.length < 2){
+                throw new Error ('Please enter a valid name');
+            }
+
+            const studentExists = this.getStudentDetailByName(studentToCheck.name);
+
+            if(studentExists){
+                throw new Error('Student already in the list');
+            }
+
+            return true;
+
+        } else {
+            throw new Error('Student should have name, phone, classid and email');
+        }
+    }
+
     // 4. Add a new student to HYF which receive the below person object as an input and store to existing list. Check for duplication. 
     addStudent(newStudent) {
-        let foundDuplicates = studentsFullList.filter(student => {
-            return student.name.includes(newStudent.name) == true || student.email.includes(newStudent.email) == true;
-        });
-        if (foundDuplicates.length > 0) {
-            console.log(`Student already added`);
-            return false;
-        } else {
-            studentsFullList.push(newStudent);
-            return true;
-        }
+            if (this.isValidStudent(newStudent)) {
+                //console.log(newStudent instanceof Student); //why is it false? Class constructor itself does not participate in the check https://javascript.info/instanceof //by the logic of instanceof, the prototype actually defines the type, not the constructor function.
+                studentsFullList.push(newStudent);
+                return true;
+            }   
     }
 
     // 5. Edit existing student information
@@ -84,9 +98,9 @@ class StudentBook {
         return true; //I still don't get it, how can I return student object instead of true?
     }
 
-    deleteStudent(name) {
-        let studentToDelete = studentsFullList.filter(student => student.name === name); //toLowerCase
-        console.log(studentToDelete); //shows the right object
+    deleteStudent(studentOut) {
+        let studentToDelete = studentsFullList.filter(student => student.name === studentOut.name);
+        console.log('delete: ', studentToDelete); //shows the right object
         console.log(studentsFullList.indexOf(studentToDelete));//shows -1
         if (studentToDelete) {
             studentsFullList.splice(studentsFullList.indexOf(studentToDelete), 1);
