@@ -86,10 +86,7 @@ WHERE id = 086;
 -- delete two entries in one of the tables
 DELETE 
 FROM student
-WHERE id = 98;
-
-SELECT *
-FROM student;
+WHERE id < 079;
 
 -- add an index to one of the columns in one of the tables
 SHOW INDEX FROM student;
