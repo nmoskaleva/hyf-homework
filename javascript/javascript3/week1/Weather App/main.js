@@ -6,18 +6,25 @@ let getInputFieldValue = function () {
     return document.querySelector("#user-city").value;
 }
 
-getWeatherButton.addEventListener("click", () => {
+getWeatherButton.addEventListener("click", getWeatherCallback)
+// add enter keypress event
+document.addEventListener('keypress', getWeatherCallback)
+
+function getWeatherCallback (e) {
+    // return if not enter key
+    if (e.type == "keypress" && e.which != 13) return;
     let inputFieldValue = getInputFieldValue();
     if (inputFieldValue != "") {
-        getWeather();
+        getWeather(`q=${document.querySelector("#user-city").value}&units=metric&appid=54c9bc00ccd01fc0915e5e7426a30c90`);
     } else {
         alert("Please enter your city");
     }
-})
+}
+
 
 //API call function
-function getWeather() {
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${document.querySelector("#user-city").value}&units=metric&appid=54c9bc00ccd01fc0915e5e7426a30c90`)
+function getWeather(query) {
+    fetch(`https://api.openweathermap.org/data/2.5/weather?${query}`)
         .then(response => response.json())
         .then((weatherResponce) => {
             //console.log(weatherResponce);
@@ -44,10 +51,7 @@ function showWeather(weatherResponce) {
 const locationBtn = document.querySelector("#user-location-btn");
 locationBtn.addEventListener("click", () => {
     navigator.geolocation.getCurrentPosition(function (position) {
-        fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric&appid=54c9bc00ccd01fc0915e5e7426a30c90`)
-            .then(response => response.json())
-            .then((weatherResponce) => {
-                showWeather(weatherResponce);
-            })
+        // resue function
+        getWeather(`lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric&appid=54c9bc00ccd01fc0915e5e7426a30c90`);   
     })
 })
