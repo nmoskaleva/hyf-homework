@@ -10,22 +10,28 @@ let container = document.querySelector(`.container`);
 
 function animateLiOut(e) {
     return new Promise((resolve) => {
+
         let card = container.children[i];
+        if (!card) { return};
+        card.addEventListener("transitionend", function(event) {
+            resolve(); //is it ok to resolve without an argument? - YES!
+        }, false);
         if (e.target === thumbsUpBtn || e.target.innerHTML === "Thumbs up" || e.target.innerHTML === "👍") {
-            setTimeout(() => {
-                card.style.transform = "translateX(1000px)";
-                //console.log(e.target);
-            }, 200);
+            card.style.transform = "translateX(1000px)";
         } else if (e.target === thumbsDownBtn || e.target.innerHTML === "Thumbs down" || e.target.innerHTML === "👎") {
-            setTimeout(() => {
-                card.style.transform = "translateX(-1000px)";
-            }, 200);
+            card.style.transform = "translateX(-1000px)";
         }
-        resolve(); //is it ok to resolve without an argument?
+        ++i;
+       
     }).then(() => {
-        container.children[i + 1].classList.add("current-card");
-        i++;
-    }).catch(() => console.error("error"));
+
+        if (container.children[i]) {
+            container.children[i].classList.add("current-card");
+        } else {
+            alert('no more images');
+        }
+    
+    }).catch((err) => console.error(err));
 }
 
 let thumbsUpBtn = document.querySelector(`.accept`);
@@ -43,15 +49,25 @@ fetch(`https://www.rijksmuseum.nl/api/nl/collection?key=V51JuyCZ&format=json&typ
         let webImage = items.map((item) => item.webImage);
         let picSrc = webImage.map((item) => item.url);
         let titles = items.map(item => item.longTitle);
-        picSrc.forEach((picsource) => { //what if I want to show both img and title? or add title as an alt? another forEach?
-            let lis = document.createElement("li");
-            container.appendChild(lis);
+        picSrc.forEach((picsource) => { 
+            let li = document.createElement("li");
+            container.appendChild(li);
             let imgs = document.createElement("img");
-            imgs.src = picsource;
-            imgs.alt = titles[0]; //?couldn't figure out how to iterate yet
+            li.classList.add('loading')
             imgs.classList.add("rendered-img");
-            lis.appendChild(imgs);
+            li.appendChild(imgs);
         });
+        
+        // Recursive function to load images consecutively
+        ;(function getRealImage (number, lis = document.querySelectorAll("ul li")) {
+            var img = lis[number].querySelector('img');
+            img.src = picSrc[number]
+            img.alt = titles[number];
+            img.addEventListener('load', () => {
+                console.log('img loaded')
+                if (picSrc[number +1]) getRealImage(number + 1);
+            } )
+        })(0);
     });
 
 

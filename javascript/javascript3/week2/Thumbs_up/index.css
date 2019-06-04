@@ -405,6 +405,10 @@ ul li:first-child {
 	opacity: 1
 }
 
+ul .loading {
+	background: white url("loading.gif") no-repeat scroll center center;
+}
+
 .interaction-container {
 	width: 300px;
 	height: 100px;
